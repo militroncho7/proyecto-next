@@ -18,6 +18,16 @@ const ContenedorProducto = styled.div`
     }
 `;
 
+const CreadorProducto= styled.p`
+    padding: 0.5rem 2rem;
+    background-color: #da552f;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+`;
+
 const Producto = () => {
 
     //state del componente
@@ -85,6 +95,13 @@ const Producto = () => {
             ...comentario,
             [e.target.name] : e.target.value
         })
+    };
+
+    //identifica si el comentario es el creador del producto
+    const esCreador = id => {
+        if(creador.id === id) {
+            return true;
+        }
     };
 
     const agregarComentario = e => {
@@ -162,9 +179,21 @@ const Producto = () => {
                                 {comentarios.map((comentario, i) =>(
                                     <li
                                         key={`${comentario.usuarioId}-${i}`}
+                                        css={css`
+                                            border: 1px solid #e1e1e1;
+                                            padding: 2rem;
+                                        `}
                                     >
                                         <p>{comentario.mensaje}</p>
-                                        <p>Escrito por: {comentario.usarioNombre}</p>
+                                        <p>Escrito por: 
+                                            <span
+                                                css={css`
+                                                    font-weight: bold;
+                                                `}
+                                            >{''}{comentario.usarioNombre}</span>
+                                        </p>
+                                        { esCreador(comentario.usuarioId) && 
+                                        <CreadorProducto>Es Creador</CreadorProducto>}
                                     </li>
                                     ))}
                                 </ul>
