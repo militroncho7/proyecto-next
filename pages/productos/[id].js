@@ -34,6 +34,7 @@ const Producto = () => {
     const [ producto, guardarProducto ] = useState({});
     const [ error, guardarError ] = useState(false);
     const [ comentario, guardarComentario ] = useState({});
+    const [ consultarDB, guardarConsultaDB ] = useState(true);
 
     //routing para obtener el id actual
     const router = useRouter();
@@ -43,21 +44,23 @@ const Producto = () => {
     const { firebase, usuario } = useContext(FirebaseContext);
 
     useEffect(() => {
-        if(id) {
+        if(id && consultarDB) {
             const obtenerProducto = async () => {
                 const productoQuery = await firebase.db.collection('productos').doc(id);
                 const producto = await productoQuery.get();
                 if(producto.exist()){
                     guardarProducto( producto.data() );
+                    guardarConsultaDB(false);
                 } else {
                     guardarError( true );
+                    guardarConsultaDB(false);
                 }
             };
             obtenerProducto();
         }
-    }, [id, producto]);
+    }, [id]);
 
-    if(Object.keys(producto).length === 0) return 'Cargando...';
+    if(Object.keys(producto).length === 0 && !error) return 'Cargando...';
 
     const { comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos, creador, haVotado } = producto
 
@@ -86,7 +89,8 @@ const Producto = () => {
         guardarProducto({
             ...producto,
             votos: nuevoTotal
-        })
+        });
+        guardarConsultaDB(true); //hay un voto consultar a la DB
     };
 
     //funciones para crear comentarios
@@ -126,14 +130,15 @@ const Producto = () => {
             ...producto,
             comentarios: nuevosComentarios
         });
+
+        guardarConsultaDB(false); //hay un nuevo comentario, consultar DB
     };
 
     return (
         <Layout>
             <>
-                { error &&  <Error404 />}
-
-                <div className="contenedor">
+                { error ?  <Error404 /> : (
+                    <div className="contenedor">
                     <h1 css={css`
                         text-align: center;
                         margin-top: 5rem;
@@ -224,6 +229,9 @@ const Producto = () => {
                         </aside>
                     </ContenedorProducto>
                 </div>
+                )}
+
+                
             </>
         </Layout>
     );
