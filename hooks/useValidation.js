@@ -23,7 +23,7 @@ const useValidacion = (stateInicial, validar, fn) => {
             ...valores,
             [e.target.name] : e.target.value
         })
-    };
+    }
 
     // Función que se ejecuta cuando el usuario hace submit
     const handleSubmit = e => {
@@ -31,14 +31,14 @@ const useValidacion = (stateInicial, validar, fn) => {
         const erroresValidacion = validar(valores);
         guardarErrores(erroresValidacion);
         guardarSubmitForm(true);
-    };
+    }
 
 
     // cuando se realiza el evento de blur
     const handleBlur = () => {
         const erroresValidacion = validar(valores);
         guardarErrores(erroresValidacion);
-    };
+    }
 
     return {
         valores, 
