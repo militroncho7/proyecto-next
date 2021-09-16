@@ -1,13 +1,13 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useContext, useState } from 'react';
+import { useRouter } from 'next/router';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { es } from 'date-fns/locale';
+import { es } from 'date-fns/locale';
 import { FirebaseContext } from '../../firebase';
 import Layout from '../../components/layout/Layout';
 import Error404 from '../../components/layout/404';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Campo, InputSubmit } from '../../components/ui/Formulario';
+import { Campo, InputSubmit } from '../../components/ui/Formulario';
 import Boton from '../../components/ui/Boton';
 
 const ContenedorProducto = styled.div`
@@ -40,7 +40,7 @@ const Producto = () => {
     const { query: { id }} = router;
 
     // context de firebase
-    const { firebase, usuario } = useContext(FirebaseContext);
+    const { firebase, usuario } = useContext(FirebaseContext);
 
     useEffect(() => {
         if(id && consultarDB) {
@@ -61,7 +61,7 @@ const Producto = () => {
 
     if(Object.keys(producto).length === 0 && !error)  return 'Cargando...';
 
-    const { comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos, creador, haVotado } = producto;
+    const { comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos, creador, haVotado } = producto;
 
     // Administrar y validar los votos
     const votarProducto = () => {

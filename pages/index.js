@@ -5,7 +5,7 @@ import useProductos from '../hooks/useProductos';
 
 const Home = () => {
 
-  const { productos } = useProductos('creado');
+  const { productos } = useProductos('creado');
 
   return (
     <div>

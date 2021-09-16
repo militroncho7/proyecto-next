@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { css } from '@emotion/core';
-import Router, { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import FileUploader from 'react-firebase-file-uploader';
 import Layout from '../components/layout/Layout';
 import { Formulario, Campo, InputSubmit, Error } from '../components/ui/Formulario';
@@ -26,7 +26,7 @@ const NuevoProducto = () => {
   // state de las imagenes
   const [nombreimagen, guardarNombre] = useState('');
   const [subiendo, guardarSubiendo] = useState(false);
-  const [ progreso, guardarProgreso ] = useState(0);
+  const [ progreso, guardarProgreso ] = useState(0);
   const [urlimagen, guardarUrlImagen] = useState('');
 
   const [ error, guardarError] = useState(false);
@@ -39,7 +39,7 @@ const NuevoProducto = () => {
   const router = useRouter();
 
   // context con las operaciones crud de firebase
-  const { usuario, firebase } = useContext(FirebaseContext);
+  const { usuario, firebase } = useContext(FirebaseContext);
 
   async function crearProducto() {
 

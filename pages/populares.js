@@ -5,7 +5,7 @@ import useProductos from '../hooks/useProductos';
 
 const Populares = () => {
 
-  const { productos } = useProductos('votos');
+  const { productos } = useProductos('votos');
 
   return (
     <div>

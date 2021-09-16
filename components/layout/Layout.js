@@ -14,6 +14,7 @@ const Layout = props => {
                         --gris3: #e1e1e1;
                         --naranja: #DA552F;
                     }
+
                     html {
                         font-size: 62.5%;
                         box-sizing: border-box;
@@ -37,6 +38,7 @@ const Layout = props => {
                     h3 {
                         font-family: 'PT Sans', sans-serif;
                     }
+
                     ul {
                         list-style: none;
                         margin: 0;
@@ -45,6 +47,7 @@ const Layout = props => {
                     a {
                         text-decoration: none;
                     }
+
                     img {
                         max-width: 100%;
                     }

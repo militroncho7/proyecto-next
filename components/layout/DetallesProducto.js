@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { es } from 'date-fns/locale';
+import { es } from 'date-fns/locale';
 import Link from 'next/link';
 
 const Producto = styled.li`
@@ -22,6 +22,7 @@ const Titulo = styled.a`
     font-size: 2rem;
     font-weight: bold;
     margin: 0;
+
     :hover {
         cursor: pointer;
     }
@@ -67,9 +68,11 @@ const Votos = styled.div`
     text-align: center; 
     border: 1px solid #e1e1e1;
     padding: 1rem 3rem;
+
     div {
         font-size: 2rem;
     }
+
     p {
         margin: 0;
         font-size: 2rem;
@@ -79,7 +82,7 @@ const Votos = styled.div`
 
 const DetallesProducto = ({producto}) => {
 
-    const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto;
+    const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto;
 
 
     return ( 
