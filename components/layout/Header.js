@@ -47,7 +47,7 @@ const Header = () => {
                     `}
                 >
                     <Link href="/">
-                        <Logo>P</Logo>
+                        <Logo>NextJS</Logo>
                     </Link>
                     
 
