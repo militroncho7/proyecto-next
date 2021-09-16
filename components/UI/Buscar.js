@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { css} from '@emotion/core';
 import Router from 'next/router';
 
 const InputText = styled.input`
@@ -8,7 +8,6 @@ const InputText = styled.input`
     padding: 1rem;
     min-width: 300px;
 `;
-
 const InputSubmit = styled.button`
     height: 3rem;
     width: 3rem;
@@ -19,10 +18,9 @@ const InputSubmit = styled.button`
     position: absolute;
     right: 1rem;
     top: 1px;
-    background-color: #FFF;
+    background-color: white;
     border: none;
-    text-indent: -999px;
-
+    text-indent: -9999px;
     &:hover {
         cursor: pointer;
     }
@@ -30,36 +28,37 @@ const InputSubmit = styled.button`
 
 const Buscar = () => {
 
-    const [ busqueda, guardarBusqueda ] = useState('');
+    const [ busqueda, guardarBusqueda] = useState('');
 
     const buscarProducto = e => {
         e.preventDefault();
 
         if(busqueda.trim() === '') return;
 
-        //redireccionar usuario a /buscar
+        // redireccionar a /buscar
         Router.push({
-            pathname: '/buscar',
+            pathname: '/buscar', 
             query: { q : busqueda }
         })
-    };
+    }
 
-    return (
+
+    return ( 
         <form
             css={css`
                 position: relative;
             `}
-            onSubmit={buscarProducto(buqueda)}
+            onSubmit={buscarProducto}
         >
-            <InputText
-                type="text"
-                placeholder="Buscar productos..."
-                onChange={ e => guardarBusqueda(e.target.value)}
+            <InputText 
+                type="text" 
+                placeholder="Buscar Productos"
+                onChange={e =>  guardarBusqueda(e.target.value) }
             />
 
             <InputSubmit type="submit">Buscar</InputSubmit>
         </form>
-    );
+     );
 }
  
 export default Buscar;
