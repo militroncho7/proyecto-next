@@ -11,7 +11,6 @@ const Producto = styled.li`
     align-items: center;
     border-bottom: 1px solid #e1e1e1;
 `;
-
 const DescripcionProducto = styled.div`
     flex: 0 1 600px;
     display: grid;
@@ -32,7 +31,7 @@ const TextoDescripcion = styled.p`
     font-size: 1.6rem;
     margin: 0;
     color: #888;
-`;
+`
 
 const Comentarios = styled.div`
     margin-top: 2rem;
@@ -80,13 +79,14 @@ const Votos = styled.div`
 
 const DetallesProducto = ({producto}) => {
 
-    const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto
+    const { id, comentarios, creado, descripcion, empresa, nombre, url, urlimagen, votos } = producto;
 
-    return (
+
+    return ( 
         <Producto>
             <DescripcionProducto>
                 <div>
-                    <Imagen src={urlimagen} />
+                    <Imagen src={urlimagen}  />
                 </div>
 
                 <div>
@@ -94,15 +94,13 @@ const DetallesProducto = ({producto}) => {
                         <Titulo>{nombre}</Titulo>
                     </Link>
                     <TextoDescripcion>{descripcion}</TextoDescripcion>
-
                     <Comentarios>
                         <div>
-                            <img src="/stacic/img/comenario.png"/>
+                            <img src="/static/img/comentario.png" />
                             <p>{comentarios.length} Comentarios</p>
                         </div>
                     </Comentarios>
-
-                    <p>Publicado hace: {formatDistanceToNow( new Date(creado), {locale:es} )}</p>
+                    <p>Publicado hace: { formatDistanceToNow( new Date(creado), {locale: es} )} </p>
                 </div>
             </DescripcionProducto>
 
@@ -111,7 +109,7 @@ const DetallesProducto = ({producto}) => {
                 <p>{votos}</p>
             </Votos>
         </Producto>
-    );
+     );
 }
  
 export default DetallesProducto;
