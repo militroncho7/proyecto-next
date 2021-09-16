@@ -1,27 +1,29 @@
-export default function validarCrearProducto(valores) {
+export default function validarCrearCuenta(valores) {
+
     let errores = {};
 
-    //validar nombre de usuario
+    // Validar el nombre del usuario
     if(!valores.nombre) {
-        errores.nombre = "El nombre es obligatorio";
-    };
+        errores.nombre = "El Nombre es obligatorio";
+    }
 
-    //validar empresa
+    // validar empresa
     if(!valores.empresa) {
-        errores.empresa = "El nombre de la empresa es obligatorio";
-    };
-
-    //validar url
+        errores.empresa = "Nombre de Empresa es obligatorio"
+    }
+    
+    // validar la url
     if(!valores.url) {
-        errores.url = "La URL del producto es obligatoria";
+        errores.url = 'La URL del producto es obligatoria';
     } else if( !/^(ftp|http|https):\/\/[^ "]+$/.test(valores.url) ) {
         errores.url = "URL mal formateada o no válida"
-    };
+    }
 
-    //validar descripcion
+    // validar descripción.
     if(!valores.descripcion) {
-        errores.descripcion = "Agrega una descripción de tu producto";
-    };
+        errores.descripcion = "Agrega una descripción de tu producto"
+    }
+
 
     return errores;
 };
